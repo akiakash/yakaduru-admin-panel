@@ -6,6 +6,7 @@ const API_URL = "http://localhost:3002/api/";
 // Blog Data Interface
 interface BlogData {
   title: string;
+  description: string;
   categories: string[];
   tags: string[];
   author: string;

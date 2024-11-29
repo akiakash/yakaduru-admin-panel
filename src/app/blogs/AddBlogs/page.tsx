@@ -17,6 +17,7 @@ import TagsMultiSelect from "./TagsMultiSelect";
 // Define the BlogData interface
 interface BlogData {
   title: string;
+  description: string;
   categories: string[];
   tags: string[];
   author: string;
@@ -34,6 +35,7 @@ interface BlogResponse {
 export default function Page() {
   // States
   const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [categories, setCategories] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [author, setAuthor] = useState<string>("");
@@ -73,6 +75,7 @@ export default function Page() {
 
       const blogData: BlogData = {
         title,
+        description,
         categories,
         tags,
         author,
@@ -131,6 +134,20 @@ export default function Page() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter Title"
+              className="w-full rounded-lg border-[1.5px] border-primary bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input dark:text-white"
+            />
+          </div>
+
+          <div>
+            <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+              Description
+            </label>
+            <input
+              type="text"
+              name="Title"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Enter Description"
               className="w-full rounded-lg border-[1.5px] border-primary bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input dark:text-white"
             />
           </div>

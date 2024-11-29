@@ -16,8 +16,11 @@ class EditorBlog extends Component {
   modules = {
     toolbar: {
       container: [
-        ["bold", "italic", "image"],
-        [{ list: "ordered" }, { list: "bullet" }],
+        ["bold", "italic", "image"], // Text formatting
+        [{ list: "ordered" }, { list: "bullet" }], // Lists
+        [{ header: "1" }, { header: "2" }, { header: "3" }], // Heading levels
+        [{ align: [] }], // Text alignment (left, center, right)
+        ["link", "blockquote", "code-block"], // Links, blockquotes, and code
       ],
       handlers: {
         image: this.imageHandler,

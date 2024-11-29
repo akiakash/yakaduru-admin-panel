@@ -44,6 +44,15 @@ const menuGroups = [
           { label: "Manage Tag ", route: "/blogs/ManageTag" },
         ],
       },
+      {
+        label: "GALLERY",
+        route: "#",
+        children: [
+          // { label: "Add Gallery", route: "/gallery/addGallery" },
+          { label: "Manage Gallery", route: "/gallery/manageGallery" },
+          { label: "Manage Category ", route: "/gallery/manageCategory" },
+        ],
+      },
 
       {
         icon: (

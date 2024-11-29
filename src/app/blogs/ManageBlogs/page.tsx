@@ -12,7 +12,9 @@ import { fetchTags } from "@/controller/Tags/Tags";
 
 interface Blog {
   id: string;
+
   title: string;
+  description: string;
   categories: string[]; // Array of category IDs
   tags: string[]; // Array of tag IDs
   author: string;

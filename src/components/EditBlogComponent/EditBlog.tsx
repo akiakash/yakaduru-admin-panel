@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import EditorBlog from "./EditorBlog";
 
 import "react-quill/dist/quill.snow.css";
+import { uploadFiles } from "@/controller/uploadFile/uploadFile";
 
 interface EditBlogModalProps {
   blog: any;
@@ -19,11 +20,13 @@ const EditBlogModal: React.FC<EditBlogModalProps> = ({
   onSave,
 }) => {
   const [title, setTitle] = useState(blog?.title || "");
+  const [description, setDescription] = useState(blog?.description || "");
   const [categories, setCategories] = useState(blog?.categories || []);
   const [tags, setTags] = useState(blog?.tags || []);
   const [author, setAuthor] = useState(blog?.author || "");
   const [content, setContent] = useState(blog?.content || "");
   const [featureImage, setFeatureImage] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -46,15 +49,29 @@ const EditBlogModal: React.FC<EditBlogModalProps> = ({
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    let featureImageUrl = "";
+
+    if (featureImage) {
+      const uploadResponse = await uploadFiles([featureImage]);
+      if (uploadResponse.success && uploadResponse.urls.length > 0) {
+        featureImageUrl = uploadResponse.urls[0];
+      } else {
+        alert("Failed to upload the feature image. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
     const updatedBlog = {
       id: blog?.id,
       title,
+      description,
       categories,
       tags,
       author,
       content,
-      featureImage,
+      featureImage: featureImageUrl,
     };
     onSave(updatedBlog);
     onClose(); // Close the modal after saving
@@ -77,6 +94,16 @@ const EditBlogModal: React.FC<EditBlogModalProps> = ({
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter Title"
+            className="w-full rounded-lg border px-5 py-3"
+          />
+        </div>
+        <div>
+          <label className="mb-3 block text-sm font-medium">Title</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setDescription(e.target.value)}
             placeholder="Enter Title"
             className="w-full rounded-lg border px-5 py-3"
           />
