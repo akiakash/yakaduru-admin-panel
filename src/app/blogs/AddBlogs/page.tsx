@@ -9,10 +9,11 @@ import { addBlog } from "@/controller/Blogs/Blogs";
 import { uploadFiles } from "@/controller/uploadFile/uploadFile";
 import RichTextEditor from "@/components/RichTextEditor/ReactQuill";
 import TextEditor from "@/components/RichTextEditor/ReactQuill";
-import Editor from "@/components/RichTextEditor/ReactQuill";
+// import Editor from "@/components/RichTextEditor/ReactQuill";
 import CategoryMultiSelect from "./CategoryMultiSelect";
 import MultiSelect from "@/components/FormElements/MultiSelect";
 import TagsMultiSelect from "./TagsMultiSelect";
+import dynamic from "next/dynamic";
 
 // Define the BlogData interface
 interface BlogData {
@@ -31,6 +32,10 @@ interface BlogResponse {
   message: string;
   data: any;
 }
+
+const Editor = dynamic(() => import("@/components/RichTextEditor/ReactQuill"), {
+  ssr: false,
+});
 
 export default function Page() {
   // States
@@ -117,6 +122,7 @@ export default function Page() {
     console.log("", value);
     setCategories(value);
   };
+
   return (
     <DefaultLayout>
       <Breadcrumb pageName="ADD BLOG" />
