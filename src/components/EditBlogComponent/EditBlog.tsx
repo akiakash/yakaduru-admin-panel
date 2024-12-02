@@ -1,10 +1,13 @@
 import CategoryMultiSelect from "@/app/blogs/ManageCategory/EditCategoryMultiSelect";
 import TagsMultiSelect from "@/app/blogs/ManageCategory/EditTagsMultiSelect";
 import React, { useState, useEffect } from "react";
-import EditorBlog from "./EditorBlog";
+// import EditorBlog from "./EditorBlog";
+
+const EditorBlog = dynamic(() => import("./EditorBlog"), { ssr: false });
 
 import "react-quill/dist/quill.snow.css";
 import { uploadFiles } from "@/controller/uploadFile/uploadFile";
+import dynamic from "next/dynamic";
 
 interface EditBlogModalProps {
   blog: any;

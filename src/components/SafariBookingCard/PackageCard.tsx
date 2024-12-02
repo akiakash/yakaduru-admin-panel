@@ -59,13 +59,15 @@ const PackageCard: React.FC<PackageCardProps> = ({
           className="mb-4 flex  w-full max-w-[1160px] flex-row gap-2 border-[1px]  border-[#C9C5BA]"
         >
           {/* Left Section - Image */}
-          <div className="max-w-[379px]">
-            <img
-              // src={pkg.image}
+          {/* <div className="max-w-[379px]">
+            <Image
+              src="{pkg.image}"
+              width={379}
+              height={240}
               alt={pkg.name}
               className="h-full min-h-[428px] w-full object-cover"
             />
-          </div>
+          </div> */}
 
           {/* Right Section - Content */}
           <div className="flex h-full w-full flex-col justify-between">
