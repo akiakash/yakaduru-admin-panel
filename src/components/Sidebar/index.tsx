@@ -28,6 +28,20 @@ const menuGroups = [
         ],
       },
       {
+        label: "PRICING ADULT & CHILDREN ",
+        route: "#",
+        children: [{ label: "Manage Pricing", route: "/PricingAdultChildren" }],
+      },
+      {
+        label: "ADD ON ",
+        route: "#",
+        children: [
+          { label: "Manage Category", route: "/addon/ManageCategory" },
+          { label: "Manage Add On", route: "/addon/ManageAddOn" },
+          { label: "Calculate Price", route: "/calculateAddOn" },
+        ],
+      },
+      {
         label: " SLOTS",
         route: "#",
         children: [
